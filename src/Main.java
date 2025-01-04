@@ -16,16 +16,8 @@ class LinkedList<T>{
     //Method to add a new node to Linked List
     public void add(T data){
         Node<T> newNode= new Node<>(data);
-        if(head==null){
-            head=newNode;
-        }
-        else{
-            Node<T> temp=head;
-            while(temp.next!=null){
-                temp=temp.next;
-            }
-            temp.next=newNode;
-        }
+        newNode.next=head; //Point new node to current head
+        head=newNode;
     }
 
     //Method to display Linked List
@@ -47,10 +39,10 @@ public class Main {
 
         //Create a Linked List instance
         LinkedList<Integer>linkedList= new LinkedList<>();
-
-        linkedList.add(56);
-        linkedList.add(30);
+        //Add elements in reverse order
         linkedList.add(70);
+        linkedList.add(30);
+        linkedList.add(56);
 
         //Display linked list
         linkedList.display();
