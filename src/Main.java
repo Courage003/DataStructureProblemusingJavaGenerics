@@ -48,6 +48,17 @@ class LinkedList<T>{
         }
     }
 
+    // Method to remove the first element (pop)
+    public T pop() {
+        if (head == null) {
+            System.out.println("List is empty. Nothing to pop.");
+            return null;
+        }
+        T removedData = head.data; // Save the data of the head
+        head = head.next;          // Move head to the next node
+        return removedData;        // Return the removed data
+    }
+
     //Method to display Linked List
     public void display(){
         Node<T> temp=head;
@@ -68,14 +79,20 @@ public class Main {
         // Create a LinkedList instance
         LinkedList<Integer> linkedList = new LinkedList<>();
 
-        // Add elements 56 and 70
-        linkedList.append(56);
-        linkedList.append(70);
+        // Add elements 56, 30, and 70
+        linkedList.add(56);
+        linkedList.add(30);
+        linkedList.add(70);
 
-        // Insert 30 between 56 and 70
-        linkedList.insertAfter(56, 30);
+        // Display the original linked list
+        System.out.println("Original List:");
+        linkedList.display();
 
-        // Display the linked list
+        // Remove the first element (pop)
+        System.out.println("Popped element: " + linkedList.pop());
+
+        // Display the updated linked list
+        System.out.println("Updated List:");
         linkedList.display();
     }
 }
