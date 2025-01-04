@@ -36,6 +36,18 @@ class LinkedList<T>{
         }
     }
 
+    public void insertAfter(T prevData, T data){
+        Node<T>temp=head;
+        while(temp!=null && !temp.data.equals(prevData)){
+            temp=temp.next;
+        }
+        if(temp!=null){
+            Node<T>newNode= new Node<>(data);
+            newNode.next=temp.next;
+            temp.next=newNode;
+        }
+    }
+
     //Method to display Linked List
     public void display(){
         Node<T> temp=head;
@@ -53,15 +65,17 @@ class LinkedList<T>{
 public class Main {
     public static void main(String[] args) {
 
-        //Create a Linked List instance
-        LinkedList<Integer>linkedList= new LinkedList<>();
-        // Append elements 56, 30, and 70
-        linkedList.append(56); // First node
-        linkedList.append(30); // Appended to 56
-        linkedList.append(70); // Appended to 30
+        // Create a LinkedList instance
+        LinkedList<Integer> linkedList = new LinkedList<>();
 
+        // Add elements 56 and 70
+        linkedList.append(56);
+        linkedList.append(70);
 
-        //Display linked list
+        // Insert 30 between 56 and 70
+        linkedList.insertAfter(56, 30);
+
+        // Display the linked list
         linkedList.display();
     }
 }
