@@ -20,6 +20,22 @@ class LinkedList<T>{
         head=newNode;
     }
 
+    //Method to append new node to end of Linked List
+    public void append(T data){
+        Node<T> newNode= new Node<>(data);
+        if(head==null){
+            head=newNode;
+        }
+        else{
+            Node<T>temp=head;
+            while(temp.next!=null){
+                temp=temp.next;
+
+            }
+            temp.next=newNode;
+        }
+    }
+
     //Method to display Linked List
     public void display(){
         Node<T> temp=head;
@@ -39,10 +55,11 @@ public class Main {
 
         //Create a Linked List instance
         LinkedList<Integer>linkedList= new LinkedList<>();
-        //Add elements in reverse order
-        linkedList.add(70);
-        linkedList.add(30);
-        linkedList.add(56);
+        // Append elements 56, 30, and 70
+        linkedList.append(56); // First node
+        linkedList.append(30); // Appended to 56
+        linkedList.append(70); // Appended to 30
+
 
         //Display linked list
         linkedList.display();
