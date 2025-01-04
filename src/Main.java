@@ -59,6 +59,26 @@ class LinkedList<T>{
         return removedData;        // Return the removed data
     }
 
+    // Method to remove the last element (popLast)
+    public T popLast() {
+        if (head == null) { // List is empty
+            System.out.println("List is empty. Nothing to pop.");
+            return null;
+        }
+        if (head.next == null) { // List has only one node
+            T removedData = head.data;
+            head = null;
+            return removedData;
+        }
+        Node<T> temp = head;
+        while (temp.next.next != null) { // Traverse to the second last node
+            temp = temp.next;
+        }
+        T removedData = temp.next.data; // Save data of the last node
+        temp.next = null;               // Remove the last node
+        return removedData;             // Return the removed data
+    }
+
     //Method to display Linked List
     public void display(){
         Node<T> temp=head;
@@ -88,8 +108,8 @@ public class Main {
         System.out.println("Original List:");
         linkedList.display();
 
-        // Remove the first element (pop)
-        System.out.println("Popped element: " + linkedList.pop());
+        // Remove the last element (popLast)
+        System.out.println("Popped last element: " + linkedList.popLast());
 
         // Display the updated linked list
         System.out.println("Updated List:");
