@@ -1,5 +1,5 @@
 //Node class to represent each element in the linked list
-class Node<T>{
+class Node<T extends Comparable<T>>{
     T data;
     Node<T> next;
 
@@ -155,6 +155,43 @@ class LinkedList<T>{
         while(temp!=null){
             System.out.print(temp.data + " -> ");
             temp=temp.next;
+        }
+        System.out.println("null");
+    }
+}
+
+
+class SortedLinkedList<T extends Comparable<T>> {
+    private Node<T> head;
+
+    // Method to add a node while maintaining sorted order
+    public void add(T data) {
+        Node<T> newNode = new Node<>(data);
+
+        // Case 1: List is empty or new node should be the new head
+        if (head == null || head.data.compareTo(data) > 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        // Case 2: Find the correct position for the new node
+        Node<T> current = head;
+        while (current.next != null && current.next.data.compareTo(data) < 0) {
+            current = current.next;
+        }
+
+        // Insert the new node in its position
+        newNode.next = current.next;
+        current.next = newNode;
+    }
+
+    // Method to display the sorted linked list
+    public void display() {
+        Node<T> temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
         }
         System.out.println("null");
     }
