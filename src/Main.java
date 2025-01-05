@@ -105,6 +105,49 @@ class LinkedList<T>{
         }
     }
 
+    //Method to search and delete a node from the given Linked List
+    public void delete(T key){
+        if(head==null){
+            System.out.println("List is empty. Nothing to delete.");
+            return;
+        }
+
+        //If head node is itself to be deleted
+        if(head.data.equals(key)){
+            head=head.next;
+            return;
+        }
+
+        //Search for key to be deleted
+        Node<T> temp=head;
+        while(temp.next!=null && !temp.next.data.equals(key)){
+            temp=temp.next;
+        }
+
+        //if key not found
+        if(temp.next==null){
+            System.out.println("Node with value "+ key+ " not found.");
+            return;
+        }
+
+        //remove the node
+        temp.next=temp.next.next;
+    }
+
+    //Method to count and return size of Linked List
+    public int size(){
+        int cnt=0;
+        Node<T> temp=head;
+        while(temp!=null){
+            cnt++;
+            temp=temp.next;
+
+        }
+        return cnt;
+    }
+
+
+
 
     //Method to display Linked List
     public void display(){
