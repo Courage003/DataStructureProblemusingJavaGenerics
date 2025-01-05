@@ -79,6 +79,18 @@ class LinkedList<T>{
         return removedData;             // Return the removed data
     }
 
+    //Method to search for a node with a given value
+    public Node<T> search(T key){
+        Node<T> temp=head;
+        while(temp!=null){
+            if(temp.data.equals(key)){
+                return temp;
+            }
+            temp=temp.next;
+        }
+        return null;
+    }
+
     //Method to display Linked List
     public void display(){
         Node<T> temp=head;
