@@ -79,6 +79,33 @@ class LinkedList<T>{
         return removedData;             // Return the removed data
     }
 
+    //Method to search for a node with a given value
+    public Node<T> search(T key){
+        Node<T> temp=head;
+        while(temp!=null){
+            if(temp.data.equals(key)){
+                return temp;
+            }
+            temp=temp.next;
+        }
+        return null;
+    }
+
+    public void insertAfter(T prevData, T data) {
+        Node<T> temp = head;
+        while (temp != null && !temp.data.equals(prevData)) {
+            temp = temp.next;
+        }
+        if (temp != null) {
+            Node<T> newNode = new Node<>(data);
+            newNode.next = temp.next;
+            temp.next = newNode;
+        } else {
+            System.out.println("Node with value " + prevData + " not found.");
+        }
+    }
+
+
     //Method to display Linked List
     public void display(){
         Node<T> temp=head;
